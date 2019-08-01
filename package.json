@@ -1,0 +1,44 @@
+{
+  "name": "S_S",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "firebase": "^5.9.4",
+    "react": "16.8.3",
+    "react-native": "0.59.9",
+    "react-native-app-intro-slider": "^2.0.1",
+    "react-native-background-task": "^0.2.1",
+    "react-native-background-timer": "^2.1.1",
+    "react-native-camera-roll-picker": "^1.3.0",
+    "react-native-elements": "^1.1.0",
+    "react-native-gesture-handler": "^1.3.0",
+    "react-native-gifted-chat": "^0.7.3",
+    "react-native-linear-gradient": "^2.5.4",
+    "react-native-map-clustering": "^1.3.2",
+    "react-native-maps": "^0.24.0",
+    "react-native-maps-super-cluster": "^1.5.0",
+    "react-native-permissions": "^1.1.1",
+    "react-native-popup-dialog": "^0.18.2",
+    "react-native-timeline-listview": "^0.2.3",
+    "react-native-vector-icons": "^6.4.2",
+    "react-navigation": "^3.9.1",
+    "react-redux": "^7.0.3",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.5",
+    "@babel/runtime": "7.4.5",
+    "babel-jest": "24.8.0",
+    "jest": "24.8.0",
+    "metro-react-native-babel-preset": "0.54.1",
+    "react-test-renderer": "16.8.3"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

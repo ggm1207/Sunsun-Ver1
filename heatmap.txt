@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Heatmaps</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      #floating-panel {
+        background-color: #fff;
+        border: 1px solid #999;
+        left: 25%;
+        padding: 5px;
+        position: absolute;
+        top: 10px;
+        z-index: 5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="floating-panel">
+      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button onclick="changeGradient()">Change gradient</button>
+      <button onclick="changeRadius()">Change radius</button>
+      <button onclick="changeOpacity()">Change opacity</button>
+      <button onclick="createData()">create data</button>
+    </div>
+    <div id="map"></div>
+    <script src="./jquery.js"></script>
+    <script type ="text/javascript">
+      // This example requires the Visualization library. Include the libraries=visualization
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+
+      var map, heatmap;
+      var t_apikey = 'ffcacc97-a169-4e4f-9f88-c01fc098e74e';
+      var mylist = [];
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: {lat: 37.875, lng: 127.743},
+          mapTypeId: 'satellite'
+        });
+
+        heatmap = new google.maps.visualization.HeatmapLayer({
+          data: getPoints(),
+          map: map
+        });
+      }
+
+      function toggleHeatmap() {
+        heatmap.setMap(heatmap.getMap() ? null : map);
+      }
+
+      function changeGradient() {
+        var gradient = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+        ]
+        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+      }
+
+      function changeRadius() {
+        heatmap.set('radius', heatmap.get('radius') ? null : 20);
+      }
+
+      function changeOpacity() {
+        heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
+      }
+
+      // X , Y 37.851407, 127.710385 , 37.893175, 127.761406
+      // 37.851407 < x < 37.893175 , 0.41678
+      // 127.710385 < Y < 127.761406 , 0.51021
+      function getSEPos(){
+        var SX = gaussianRand() * (0.04) + 37.851407
+        var SY = gaussianRand() * (0.04) + 127.710385
+        var EX = gaussianRand() * (0.04) + 37.861307
+        var EY = gaussianRand() * (0.04) + 127.720385
+        return [SX.toFixed(6),SY.toFixed(6),EX.toFixed(6),EY.toFixed(6)]
+      }
+
+      function gaussianRand() {
+        var rand = 0;
+        for (var i = 0; i < 6; i += 1) {
+          rand += Math.random();
+        }
+        return rand / 6;
+      }
+
+      function getPointbyTmap(){
+        alert('ist works!');
+        var maplist = [];
+        var pis = getSEPos();
+        alert(typeof(pis[0]));
+        var headers = {};
+        headers["appKey"] = "ffcacc97-a169-4e4f-9f88-c01fc098e74e";//실행을 위한 키 입니다. 발급받으신 AppKey(서버키)를 입력하세요.
+        $.ajax({
+          method:"POST",
+          headers : headers,
+          url:"https://api2.sktelecom.com/tmap/routes/pedestrian?version=1&format=json",//보행자 경로안내 api 요청 url입니다.
+          async: false,
+          data:{
+            //출발지 위경도 좌표입니다.
+            startX : "37.882542",
+            startY : "127.722825",
+            //목적지 위경도 좌표입니다.
+            endX : "37.882202",
+            endY : "127.748189",
+            //출발지, 경유지, 목적지 좌표계 유형을 지정합니다.
+            reqCoordType : "WGS84GEO",
+            resCoordType : "WGS84GEO",
+            //각도입니다.
+            //출발지 명칭입니다.
+            startName : "출발지",
+            //목적지 명칭입니다.
+            endName : "도착지"
+          },
+          //데이터 로드가 성공적으로 완료되었을 때 발생하는 함수입니다.
+          success:function(response){
+            alert(response);
+            var prtcl = response;
+            var featurelist = prtcl.features;
+            for(i=0;i<featurelist.length;i++){
+              if (featurelist[i].geometry.type === "LineString"){
+                maplist = maplist.concat(featurelist[i].geometry.coordinates);
+              }; 
+            };
+          }
+        });
+        return maplist;
+      }
+
+      function addpoint(){
+
+      }
+
+      // Heatmap data: 500 Points
+      function getPoints() {
+        var lists = []
+        var pis;
+        for (let i=0;i<1300;i++){
+          pis = getSEPos()
+          lists.push(new google.maps.LatLng(pis[0],pis[1]))
+          lists.push(new google.maps.LatLng(pis[2],pis[3]))
+        }
+
+        return lists;
+      }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbIUe5xUM3Jm7rdL8CWXG9YJYiAC1yyGA&libraries=visualization&callback=initMap">
+    </script>
+  </body>
+</html>
