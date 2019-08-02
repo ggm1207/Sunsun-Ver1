@@ -32,15 +32,9 @@
 ### 과제 결과 및 성과
 #### Views
 
-<img width = "150" height = "270" src = "./img/1.png"> 
-<img width = "150" height = "270" src = "./img/2.jpg">
-<img width = "150" height = "270" src = "./img/3.jpg">
-<img width = "150" height = "270" src = "./img/4.jpg">
-<img width = "150" height = "270" src = "./img/5.jpg">
-<img width = "150" height = "270" src = "./img/6.jpg">
-<img width = "150" height = "270" src = "./img/7.jpg">
-<img width = "150" height = "270" src = "./img/8.jpg">
-<img width = "150" height = "270" src = "./img/9.jpg">
+<img width = "150" height = "270" src = "./img/1.jpg"> <img width = "150" height = "270" src = "./img/2.jpg"> <img width = "150" height = "270" src = "./img/3.jpg"> <img width = "150" height = "270" src = "./img/4.jpg"> <img width = "150" height = "270" src = "./img/5.jpg">
+
+<img width = "150" height = "270" src = "./img/6.jpg"> <img width = "150" height = "270" src = "./img/7.jpg"> <img width = "150" height = "270" src = "./img/8.jpg"> <img width = "150" height = "270" src = "./img/9.jpg">
 
 #### 메인 알고리즘
   1 Tracking : 사용자의 이동경로를 Tracking 합니다.<br>
