@@ -51,9 +51,8 @@
 #### Sharing
 ![Sharing](img/sunsun-idea-5.png)
 
-
-[![Video Label](./img/you.jpg)](https://www.youtube.com/watch?v=vQNNJhXDhmg) 시연 동영상
-
+#### Tracking - Mapping - Clustering : 시연 동영상
+[![Video Label](./img/you.jpg)](https://www.youtube.com/watch?v=vQNNJhXDhmg)
 
 ## 4 기대효과
 
