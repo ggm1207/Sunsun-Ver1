@@ -30,9 +30,9 @@
 ## 과제 결과 및 성과
 ### Views
 
-<img width = "150" height = "270" src = "./img/1.jpg"> <img width = "150" height = "270" src = "./img/2.jpg"> <img width = "150" height = "270" src = "./img/3.jpg"> <img width = "150" height = "270" src = "./img/4.jpg"> <img width = "150" height = "270" src = "./img/5.jpg">
+<img width = "150" height = "270" src = "./img/1.jpg"> <img width = "150" height = "270" src = "./img/2-1.jpg"> <img width = "150" height = "270" src = "./img/3.jpg"> <img width = "150" height = "270" src = "./img/4.jpg"> <img width = "150" height = "270" src = "./img/5.jpg">
 
-<img width = "150" height = "270" src = "./img/6.jpg"> <img width = "150" height = "270" src = "./img/7.jpg"> <img width = "150" height = "270" src = "./img/8.jpg"> <img width = "150" height = "270" src = "./img/9.jpg">
+<img width = "150" height = "270" src = "./img/6.jpg"> <img width = "150" height = "270" src = "./img/7.jpg"> <img width = "150" height = "270" src = "./img/8-1.jpg"> <img width = "150" height = "270" src = "./img/9.jpg">
 
 ### 메인 알고리즘
 
@@ -64,7 +64,7 @@
 
 은상을 받았습니당...! 기대 전혀 안하고 있었는데 받아서 더욱 좋았습니다. ㅎㅎ <br>
 
-![Award](./img/award.jpg) 은상!!
+![Award](./img/award-1.jpg) 은상!!
 
 ## 6 끝마치며
 
